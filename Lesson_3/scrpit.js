@@ -19,10 +19,15 @@ function getOperation(){
     let operator;
 do  { 
     operator = prompt('what to do ');
-} while (!(operator === '+' || operator === '-' || operator === '/' || operator === '*'))
+} while (isOperatorValid(operator))
  return operator;
 } 
-
+function isOperatorValid(operator){
+  return  operator != '+' &&
+          operator != '-' && 
+          operator != '/' && 
+          operator != '*'
+}
 function calculate(op,a,b){
     let result;
 
@@ -38,3 +43,4 @@ switch(op){
 function showResult(op,a,b,res){
     console.log(`${a} ${op} ${b} = ${res}`);
 }
+
