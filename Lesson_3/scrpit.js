@@ -11,22 +11,25 @@ function getOperand(operandName){
     let operand 
     do {
         operand = Number(prompt("Operand"+ operandName));
-    } while (isNaN(operand))
+    } while (isOperandValue(operand))
     operand =getOperand('A');
     return operand;
+}
+function isOperandValue(operand){
+    return (!isNaN(operand))
 }
 function getOperation(){
     let operator;
 do  { 
     operator = prompt('what to do ');
-} while (isOperatorValid(operator))
+} while (!isOperatorValid(operator))
  return operator;
 } 
 function isOperatorValid(operator){
-  return  operator != '+' &&
-          operator != '-' && 
-          operator != '/' && 
-          operator != '*'
+  return  operator === '+' ||
+          operator === '-' || 
+          operator === '/' || 
+          operator === '*'
 }
 function calculate(op,a,b){
     let result;
