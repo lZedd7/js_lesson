@@ -1,4 +1,4 @@
-let operator = getOperation();
+const operator = getOperation();
 
 const operandA = getOperand('A');
 const operandB = getOperand('B');
@@ -8,29 +8,32 @@ const result = calculate(operator, operandA, operandB);
 showResult(operator, operandA, operandB,result);
 
 function getOperand(operandName){
-    let operand 
+  let operand 
     do {
         operand = Number(prompt("Operand"+ operandName));
-    } while (isOperandValue(operand))
-    operand =getOperand('A');
+    } while (!isOperandValue(operand))
     return operand;
 }
+
 function isOperandValue(operand){
-    return (!isNaN(operand))
+    return !isNaN(operand)
 }
+
+
 function getOperation(){
     let operator;
 do  { 
-    operator = prompt('what to do ');
+    operator = prompt('what to do');
 } while (!isOperatorValid(operator))
- return operator;
-} 
-function isOperatorValid(operator){
-  return  operator === '+' ||
-          operator === '-' || 
-          operator === '/' || 
-          operator === '*'
+return operator;
 }
+function isOperatorValid(operator){
+    return    operator === '+' ||
+              operator === '-' || 
+              operator === '/' || 
+              operator === '*'
+}
+
 function calculate(op,a,b){
     let result;
 
@@ -46,4 +49,5 @@ switch(op){
 function showResult(op,a,b,res){
     console.log(`${a} ${op} ${b} = ${res}`);
 }
+
 
