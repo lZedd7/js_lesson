@@ -11,12 +11,8 @@ const VALID_OPERATORS = [   PLUS_SIGN,
 
 
 const operator = getOperation();
-
 const operandsCount = getOperandsCount();
 const operands = getOperands(operandsCount);
-
-// const operandA = getOperand('A');
-// const operandB = getOperand('B');
 
 const result = calculate(operator, operands);
 
@@ -53,7 +49,7 @@ function getOperands(count){
     }
         return operands;
 } 
-// console.log(operands);
+
 function getOperation(){
     let operator;
 do  { 
@@ -62,10 +58,7 @@ do  {
 return operator;
 }
 function isOperatorValid(operator){
-    return    operator === '+' ||
-              operator === '-' || 
-              operator === '/' || 
-              operator === '*'
+    return    VALID_OPERATORS.includes(operator)
 }
 
 function calculate(op, nums){
