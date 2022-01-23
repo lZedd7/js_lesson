@@ -14,7 +14,7 @@ const operator = getOperation();
 const operandsCount = getOperandsCount();
 const operands = getOperands(operandsCount);
 
-const result = calculate(operator, operands);
+const result = calculate(operator, operands); 
 
 showResult(operator, operands,result);
 
