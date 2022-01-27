@@ -12,7 +12,7 @@ const quizQuestions =[
     {text :'Сколько будет 2+2?', answer: '4', type: TYPES.PROMT},
     {text :'Солнце встает на востоке?', answer: 'true', type: TYPES.CONFIRM},
     {text :'Сколько будет 5 / 0?', answer: 'infinity', type: TYPES.PROMT},
-    {text :'Какого цвета небо?', answer: 'голубой', type: TYPES.PROMT},
+    {text :'Какого цвета небо?', answer: ['голубой', 'синий'], type: TYPES.PROMT},
     {text :'Как правильный ответ на главный вопрос жизни, вселенной и всего такого', answer: '42', type: TYPES.PROMT}
 ]
 startQuiz(quizQuestions);
