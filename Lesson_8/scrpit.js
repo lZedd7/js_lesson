@@ -31,13 +31,3 @@ function fib(n){
 }
 
 console.log(fib(3));
-
-
-function calc(n){
-    if ( n=== 1){
-        return 1;
-    }
-    return  n + calc (n-1);
-}
-const calc1 = (n) => n? n + calc1(n-1): 0 ;
-
