@@ -1,33 +1,26 @@
-
-
-// function sumTo(number){
-//     let sum = 0;
-//     for (i = 1; i <= number; i++){
-//         sum += i;
-//     }
-//     return sum;
-// }
-
-// sumTo(1)
-
-
-
-// function sumToR(number){
-//     if (number == 1) return 1;
-//     return sumToR(number) = number + sumToR(number-1);
-// }
-// sumToR(40)
-
-
-function factorial(num){
-   
-    return (num != 1) ? num * factorial(num - 1) : 1;
+function createCalculator(num){
+    
+    return {
+        
+        sum: (arg) =>isArgumentValid(arg) ?  num +=arg : null, 
+        mult: (arg) =>isArgumentValid(arg) ? num *=arg : null, 
+        div: (arg) =>isArgumentValid(arg) ?  num /= a : null, 
+        sub: (arg) =>isArgumentValid(arg) ?  num -= arg : null , 
+        set: (arg) =>isArgumentValid(arg) ?  num = arg : null,
+     } 
+  }
+function isArgumentValid(num){
+    return !isNaN(num)
 }
+const calc = createCalculator(10);
 
-console.log(factorial(5))
+calc.sum(5); /// 15
+calc.mult(10); // 150
+calc.sub(40); // 110
+calc.div(10); // 11
+calc.set(100); // reset 
 
-function fib(n){
-    return  n <= 1 ? n :   n = fib(n-1) + fib(n-2) 
-}
 
-console.log(fib(3));
+
+
+ 
