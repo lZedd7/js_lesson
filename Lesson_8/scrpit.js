@@ -12,7 +12,7 @@ function createCalculator(num){
 function isArgumentValid(num){
     return !isNaN(num)
 }
-const calc = createCalculator(10);
+const calc = createCalculator(10); 
 
 calc.sum(5); /// 15
 calc.mult(10); // 150
