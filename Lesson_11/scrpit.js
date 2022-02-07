@@ -1,3 +1,8 @@
+const DELETE_BTN_CLASS ='delete-btn';
+const TASK_ITEM_CLASS = 'task-item';
+const DONE_CLASS = 'done';
+const TASK_ITEM_SELECTOR = '.' + TASK_ITEM_CLASS ;
+
 const taskInput = document.getElementById('taskNameInput');
 const taskTemplate = document.getElementById('newTaskTemplate').innerHTML;
 const listEl = document.getElementById('taskList');
@@ -18,11 +23,10 @@ if (isValid(title)){
 }
 function onListClick(e){
     const taskEl = getTaskElement(e.target);
-    if(e.target.classList.contains('delete-btn')){
-        deleteTask(taskEl);
-    }
-    if(e.target.classList.contains('task-item')){
-        toggleTask(taskEl);
+    const classList = e.target.classList;
+    switch(true){
+        case (classList.contains(DELETE_BTN_CLASS)) : return deleteTask(taskEl); break
+        case (classList.contains(TASK_ITEM_CLASS)) : return toggleTask(taskEl);  break
     }
 }
 
@@ -32,8 +36,8 @@ function isValid(text){
 function addNewTask(title){
     const newTaskHtml = getTaskHtml(title);
 
-    newTaskEl.addEventListener('click', toggleTodo);
-    newTaskEl.querySelector('span').addEventListener('click', deleteTodo);
+    // newTaskEl.addEventListener('click', toggleTodo);
+    // newTaskEl.querySelector('span').addEventListener('click', deleteTodo);
 
     listEl.insertAdjacentHTML('beforeend', newTaskHtml);
 }
@@ -45,10 +49,10 @@ function clearInput(){
     taskInput.value = '';
 }
 function getTaskElement(el){
-    return el.closest('.task-item');
+    return el.closest(TASK_ITEM_SELECTOR );
 }
 function toggleTask(el){
-    el.classList.toggle('done');
+    el.classList.toggle(DONE_CLASS);
 }
 function deleteTask(el){
     el.remove();
