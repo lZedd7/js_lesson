@@ -10,11 +10,12 @@ class Accordeon{
     }
 
     clickHandler = (e) =>{
-        if(e.target.classList.contains(ITEM_TITLE_CLASS)){
+        if(e.target.classList.contains(Accordeon.ITEM_TITLE_CLASS)){
             const itemEl = this.findItem(e.target);
-        this.toggleItem(e.target);   
+        this.toggleItem(itemEl);   
         }
     }
+  
     bindClasses(el){
         Array.prototype.forEach.call(
             el.children , (accordeonItem) => {
@@ -27,10 +28,9 @@ class Accordeon{
     }
 
     bindCEvents(el){
-        el.addEventListener('click', this.clickHandler);
+        el.addEventListener('click',  this.clickHandler.bind(this)) ;
     }
     clickHandler(e){
-        console.log(this);
         if(e.target.classList.contains(ITEM_TITLE_CLASS)){
             const itemEl = this.findItem(e.target);
         this.toggleItem(e.target);   
@@ -39,17 +39,20 @@ class Accordeon{
 
     toggleItem(itemEl){
             const bodyEl =  this.findBody(itemEl);
-            const visibleBody = this._el.querySelectorAll('.'+ Accordeon.OPEN_CLASS);
- 
-            this.hideBody(visibleBody);
-            this.toggleBody(bodyEl)
-            
-    }
+           const visibleBody = this._el.querySelector('.' + Accordeon.OPEN_CLASS);
+           if(visibleBody !== bodyEl){
+           this.hideBody(visibleBody);
+        }
+           this.toggleBody(bodyEl);
+           
+        }
     hideBody(body){
-        body.classList.remove(Accordeon.OPEN_CLASS);
+        if(body){
+            body.classList.remove(Accordeon.OPEN_CLASS);
+        }
     }
     toggleBody(body){
-        bodyEl.classList.toggle(Accordeon.OPEN_CLASS);
+        body.classList.toggle(Accordeon.OPEN_CLASS);
     }
     findItem(el){
         return e.closest('.' + Accordeon.ITEM_CLASS);

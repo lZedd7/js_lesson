@@ -1,0 +1,15 @@
+.accordeon-item{
+    border:1px solid black;
+    margin-bottom: 5px;
+}
+.accordeon-item-title{
+    background-color: lightgoldenrodyellow;
+    cursor: pointer;
+}
+
+.accordeon-item-body{
+   display: none;
+}
+.accordeon-item-body.open{
+    display: block;
+ }
