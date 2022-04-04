@@ -23,9 +23,9 @@ function onListClick(e) {
     const taskEl = getTaskElement(e.target);
     switch (true) {
         case e.target.classList.contains(DELETE_BTN_CLASS):
-            return deleteTodo(+taskEl.dataset.id);
+            return deleteTodo(taskEl.dataset.id);
         case e.target.classList.contains(TASK_ITEM_CLASS):
-            return toggleTodo(+taskEl.dataset.id);
+            return toggleTodo(taskEl.dataset.id);
     }
 }
 function toggleTodo(todoId){
