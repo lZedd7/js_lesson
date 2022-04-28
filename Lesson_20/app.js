@@ -13,6 +13,8 @@ const photoItemTemplate = document.querySelector('#photoItemTemplate')
 
 albumsEl.addEventListener('click', onAlbumsClick);
 
+let activeAlbum = null;
+
 init();
 
 function init() {
@@ -47,17 +49,26 @@ function getFirstAlbumPhotos(data) {
 }
 
 function getPhotos(albumId) {
+    
     return fetch(getPhotosUrl(albumId))
         .then((resp) => resp.json())
-        .then(renderPhotos);
+        .then(renderPhotos)
+        .then(() => updateActiveAlbum(albumId));
 }
-
+function updateActiveAlbum(albumId){
+    const el = documentquerySelector(`.album-item[data-id ="${activeAlbum}"]`).classList.add('.active'); 
+    if(el){
+        el.classList.remove('active');
+    }
+    document.querySelector(`.album-item[data-id ="${albumId}"]`).classList.add('.active'); 
+    activeAlbum = albumId;
+}
 function getPhotosUrl(albumId) {
     return PHOTOS_URL.replace('{{id}}', albumId);
 }
 
 function renderPhotos(data) {
-    photosEl.innerHTML = data
+    photosEl.innerHTML = data 
         .map((photo) => generatePhotoHtml(photo))
         .join('\n');
 }
